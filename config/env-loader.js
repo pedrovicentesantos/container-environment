@@ -23,15 +23,15 @@ const loadDotEnv = nodeEnv => {
       path: path.join(__dirname, 'environments', 'test.env'),
     });
   }
-}
+};
 
 const load = nodeEnv => {
   if (PRODUCTION_ENVIRONMENTS.includes(nodeEnv)) {
     return;
   }
   loadDotEnv(nodeEnv);
-}
+};
 
 module.exports = {
   load,
-}
+};

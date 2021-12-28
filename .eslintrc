@@ -11,7 +11,8 @@
       "imports": "always-multiline",
       "exports": "always",
       "functions": "never"
-    }]
+    }],
+    "semi": [2, "always"]
   },
   "overrides": [
     {

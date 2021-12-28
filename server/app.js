@@ -14,6 +14,6 @@ const HttpApp = (infrastructure) => {
   app.use(router.routes());
 
   return app;
-}
+};
 
 module.exports = HttpApp;

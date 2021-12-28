@@ -23,4 +23,4 @@ module.exports = {
     db: parseInt(process.env.REDIS_DB),
     keyPrefix: process.env.REDIS_KEY_PREFIX || `${process.env.NODE_ENV}:`,
   },
-}
+};

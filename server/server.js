@@ -5,7 +5,7 @@ const HttpServer = infrastructure => {
   const app = httpApp(infrastructure);
 
   const start = () =>
-    new Promise((resolve, reject) => 
+    new Promise((resolve, reject) =>
       app.listen(config.port)
         .once('listening', () => resolve(app))
         .once('error', reject)
@@ -13,7 +13,7 @@ const HttpServer = infrastructure => {
 
   return {
     start,
-  }
-}
+  };
+};
 
 module.exports = HttpServer;

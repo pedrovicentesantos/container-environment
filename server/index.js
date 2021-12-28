@@ -12,7 +12,7 @@ const connectInfrastructure = () =>
     ])
     .then(([mongoDb, redis]) => ({
       mongoDb,
-      redis
+      redis,
     }));
 
 const startServer = infrastructure =>
