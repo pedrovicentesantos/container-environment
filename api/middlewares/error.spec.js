@@ -1,6 +1,5 @@
 const R = require('ramda');
 const sinon = require('sinon');
-
 const { catalogue, ApplicationError } = require('_domain/error');
 const { responsesTable } = require('_application/translators/error-translator');
 const { awaitAll } = require('_api/commons');
@@ -11,7 +10,7 @@ const testMiddleware = async (nextError, expectedResponse) => {
   const next = sinon.stub().rejects(nextError);
 
   await middleware(ctx, next);
-  console.log(ctx);
+
   expect(ctx.status).to.equal(expectedResponse.status);
   expect(ctx.body).to.deep.equal(expectedResponse.body);
 };
