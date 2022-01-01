@@ -22,7 +22,7 @@ const routes = infrastructure => {
   const likeTvShow = new LikeTvShow(infrastructure);
   const topLikedTvShows = new TopLikedTvShows(infrastructure);
 
-  router.post('/tv-shows', validate(schemas.createTvShow), createTvShow.execute);
+  router.post('/tv-shows', validate(schemas.createTvShow), createTvShow.create);
   router.put('/tv-shows/:id/likes', validate(schemas.likeTvShow), likeTvShow.execute);
   router.get('/tv-shows', topLikedTvShows.execute);
 
