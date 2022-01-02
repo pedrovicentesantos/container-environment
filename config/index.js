@@ -7,6 +7,7 @@ module.exports = {
   logging: {
     name: 'container-environment',
     level: process.env.LOG_LEVEL || 'info',
+    prettyPrint: process.env.LOG_PRETTY === 'true',
   },
   mongodb: {
     url: process.env.MONGODB_URL,
