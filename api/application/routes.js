@@ -18,9 +18,9 @@ const routes = infrastructure => {
   router.use(error);
   router.use(validator());
 
-  const createTvShow = new CreateTvShow(infrastructure);
-  const likeTvShow = new LikeTvShow(infrastructure);
-  const topLikedTvShows = new TopLikedTvShows(infrastructure);
+  const createTvShow = CreateTvShow(infrastructure);
+  const likeTvShow = LikeTvShow(infrastructure);
+  const topLikedTvShows = TopLikedTvShows(infrastructure);
 
   router.post('/tv-shows', validate(schemas.createTvShow), createTvShow.create);
   router.put('/tv-shows/:id/likes', validate(schemas.likeTvShow), likeTvShow.like);
