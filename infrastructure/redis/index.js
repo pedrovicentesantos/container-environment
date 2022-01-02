@@ -9,7 +9,7 @@ const redis = new Redis(
     lazyConnect: true,
     keyPrefix: config.keyPrefix,
     db: config.db,
-  },
+  }
 );
 
 const connect = () =>
@@ -27,4 +27,4 @@ module.exports = {
   connect,
   close,
   isConnected,
-}
+};
