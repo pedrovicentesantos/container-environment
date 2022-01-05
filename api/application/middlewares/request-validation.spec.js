@@ -52,7 +52,7 @@ describe('Request validation middleware test', () => {
       const validationErrors = sandbox.stub().resolves([
         {
           param: 'rating',
-          msg: 'Rating must be a number bigger or equal to 0 and equal or smaller than 10, Rating must be a number bigger or equal to 0 and equal or smaller than 10',
+          msg: 'Rating must be a number bigger or equal to 0 and equal or smaller than 10',
         },
       ]);
       const checkBody = sandbox.stub(() => {
@@ -68,7 +68,7 @@ describe('Request validation middleware test', () => {
       const next = sandbox.stub().resolves();
       const expectedCode = catalogue.INVALID_REQUEST;
       const expectedCause = [
-        'rating: Rating must be a number bigger or equal to 0 and equal or smaller than 10, Rating must be a number bigger or equal to 0 and equal or smaller than 10',
+        'rating: Rating must be a number bigger or equal to 0 and equal or smaller than 10',
       ];
 
       const promise = middleware(schema)(ctx, next);
