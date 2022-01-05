@@ -10,7 +10,6 @@ const createTvShow = {
   rating: {
     in: 'body',
     notEmpty: true,
-    isInt: true,
   },
 };
 

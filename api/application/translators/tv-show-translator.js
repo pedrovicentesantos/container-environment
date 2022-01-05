@@ -8,7 +8,7 @@ const { TvShow } = require('_domain/tv-show');
  * @param {Number} tvShow.rating
  */
 const toDomainModel = ({ title, description, rating }) =>
-  TvShow({ title, description, rating });
+  TvShow({ title, description, rating: parseFloat(rating) });
 
 const toApplication = ({ id, title, description, rating, likes: { amount } }) => ({
   id,

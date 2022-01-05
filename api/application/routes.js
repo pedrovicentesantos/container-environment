@@ -4,7 +4,7 @@ const validator = require('koa-async-validator');
 // Middlewares
 const error = require('./middlewares/error');
 const validate = require('./middlewares/request-validation');
-// const customValidators = require('./models/validators');
+const customValidators = require('./models/validators');
 const schemas = require('./models/request-schemas');
 
 // Application
@@ -16,7 +16,7 @@ const routes = infrastructure => {
   const router = new Router();
 
   router.use(error);
-  router.use(validator());
+  router.use(validator({ customValidators }));
 
   const createTvShow = CreateTvShow(infrastructure);
   const likeTvShow = LikeTvShow(infrastructure);

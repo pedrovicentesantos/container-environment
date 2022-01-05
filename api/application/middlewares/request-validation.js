@@ -32,6 +32,11 @@ const handleValidationErrors = R.pipe(
  */
 const validate = schema => (ctx, next) => {
   ctx.check(schema);
+  // Custom validation to rating field
+  ctx
+    .checkBody('rating', 'Rating must be a number bigger or equal to 0 and equal or smaller than 10')
+    .gte(0)
+    .lte(10);
   return ctx
     .validationErrors()
     .then(e =>
