@@ -12,8 +12,7 @@ describe('top-liked-tv-shows usecase test', () => {
   afterEach(() => {
     sandbox.restore();
   });
-  // Teste também quando o cache está vazio
-  // Validar se o putInCache foi chamado
+
   describe('#topLiked test', () => {
     const randomInt = (min, max) => faker.datatype.number({
       min,
