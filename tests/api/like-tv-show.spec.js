@@ -1,15 +1,14 @@
 const sinon = require('sinon');
 const faker = require('faker');
 const { v4: uuid } = require('uuid');
-const createTestApi = require('_tests/helpers/server');
-const mongoClient = require('_infrastructure/mongodb');
-const { cleanDataBase } = require('_tests/helpers/utils');
+const { createTestApi, createTestMongoDb } = require('_tests/helpers/server');
 
-describe('PUT /tv-shows/:id/likes endpoint test', () => {
-  let sandbox, testApi;
+describe('PUT /api/tv-shows/:id/likes endpoint test', () => {
+  let sandbox, testApi, mongoDb;
   beforeEach(async () => {
     sandbox = sinon.createSandbox();
     testApi = await createTestApi();
+    mongoDb = await createTestMongoDb();
   });
   afterEach(() => {
     sandbox.restore();
@@ -38,18 +37,6 @@ describe('PUT /tv-shows/:id/likes endpoint test', () => {
   });
 
   context('When sending an existing id', () => {
-    let mongoDb;
-
-    before(async () => {
-      mongoDb = await mongoClient.connect();
-    });
-    afterEach(() =>
-      cleanDataBase(mongoDb)
-    );
-    after(() =>
-      mongoClient.close()
-    );
-
     it('should respond with updated tv show', async () => {
       const id = uuid();
       const savedTvShow = {

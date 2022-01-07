@@ -1,6 +1,6 @@
 const sinon = require('sinon');
 const faker = require('faker');
-const createTestApi = require('_tests/helpers/server');
+const { createTestApi } = require('_tests/helpers/server');
 
 describe('POST /api/tv-shows endpoint test', () => {
   let sandbox, testApi;

@@ -39,6 +39,12 @@ afterEach(() =>
  * Supertest instance connected to the application server.
  * You can use it for executing integration tests.
  */
-const api = () => _api;
+const createTestApi = () => _api;
+const createTestRedis = () => _redis;
+const createTestMongoDb = () => _mongodb;
 
-module.exports = api;
+module.exports = {
+  createTestApi,
+  createTestRedis,
+  createTestMongoDb,
+};
