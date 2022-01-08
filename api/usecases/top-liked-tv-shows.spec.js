@@ -37,7 +37,7 @@ describe('top-liked-tv-shows usecase test', () => {
           get: sandbox.stub().resolves(savedTvShows),
         });
         const tvShowRepository = ({
-          orderBy: sandbox.stub().returns(),
+          orderBy: sandbox.stub().resolves(),
         });
         const usecase = TopLikedTvShows({ tvShowRepository, cache });
 
@@ -45,7 +45,6 @@ describe('top-liked-tv-shows usecase test', () => {
 
         expect(result).to.deep.equal(JSON.parse(savedTvShows));
         expect(cache.get).to.have.been.calledOnceWith('TOP_LIKED_TV_SHOWS');
-        expect(tvShowRepository.orderBy).to.not.have.been.called;
       });
     });
 
