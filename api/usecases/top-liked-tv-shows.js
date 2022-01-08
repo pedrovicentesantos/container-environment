@@ -1,35 +1,15 @@
 const R = require('ramda');
+const { getFromCache, fetch, putInCache } = require('_api/commons');
 const CACHE_KEY = 'TOP_LIKED_TV_SHOWS';
-const CACHE_EXPIRATION_IN_SECONDS = 60;
-
-const serialize = R.unary(JSON.stringify);
-const deserialize = R.unary(JSON.parse);
-
-const deserializeCacheValue = R.ifElse(
-  R.not,
-  R.always([]),
-  deserialize
-);
+const limit = 5;
 
 const TopLikedTvShows = ({ tvShowRepository, cache }) => {
-  const getFromCache = () =>
-    cache
-      .get(CACHE_KEY)
-      .then(deserializeCacheValue);
-
-  const putInCache = data =>
-    cache
-      .put(CACHE_KEY, serialize(data), CACHE_EXPIRATION_IN_SECONDS)
-      .then(R.always(data));
-
-  const fetchAndCache = () =>
-    tvShowRepository
-      .orderBy('likes.amount', 5)
-      .then(putInCache);
-
   const topLiked = () =>
-    getFromCache()
-      .then(R.when(R.isEmpty, fetchAndCache));
+    getFromCache(cache, CACHE_KEY)
+      .then(R.when(R.isEmpty, R.always(
+        fetch(tvShowRepository, 'likes.amount', limit)
+          .then(data => putInCache(cache, CACHE_KEY, data))
+      )));
 
   return {
     topLiked,

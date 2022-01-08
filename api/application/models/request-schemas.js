@@ -21,7 +21,16 @@ const likeTvShow = {
   },
 };
 
+const topRatedTvShows = {
+  top: {
+    optional: true,
+    in: 'query',
+    isInt: true,
+  },
+};
+
 module.exports = {
   createTvShow,
   likeTvShow,
+  topRatedTvShows,
 };

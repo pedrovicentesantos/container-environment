@@ -32,12 +32,18 @@ const handleValidationErrors = R.pipe(
  */
 const validate = schema => (ctx, next) => {
   ctx.check(schema);
-  // Custom validation to rating field
+  // Custom validation for rating field
   if (ctx.request?.body?.rating) {
     ctx
       .checkBody('rating', 'Rating must be a number bigger or equal to 0 and equal or smaller than 10')
       .gte(0)
       .lte(10);
+  }
+  // Custom validation for top query param
+  if (ctx.query?.top) {
+    ctx
+      .checkQuery('top', 'Top must be a number bigger or equal to 1')
+      .gte(1);
   }
   return ctx
     .validationErrors()
