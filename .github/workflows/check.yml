@@ -27,14 +27,5 @@ jobs:
       - run: npm run lint
         name: Lint
 
-      - run: docker-compose up -d mongodb redis
-        name: Start infrastructure
-
-      - run: npm run test
+      - run: make test
         name: Run unit and integration tests
-
-      - run: npm run test:cover
-        name: Run test coverage
-
-      - run: docker-compose down
-        name: Dispose infrastructure
