@@ -21,10 +21,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - run: npm ci
+      - run: make install
         name: Install dependencies
 
-      - run: npm run lint
+      - run: make lint
         name: Lint
 
       - run: make test
